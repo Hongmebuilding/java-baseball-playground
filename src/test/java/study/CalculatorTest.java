@@ -2,42 +2,41 @@ package study;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.Calculator;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CalculatorTest {
-    Calculator cal;
+class CalculatorTest {
 
     @BeforeEach
-    public void setUp()  {
-        cal = new Calculator();
-    }
-
-    @Test
-    public void add()  {
-        assertEquals(7, cal.add(3, 4));
-    }
-
-    @Test
-    public void subtract()  {
-        assertEquals(1, cal.subtract(5,  4));
-    }
-
-    @Test
-    public void multiply()  {
-        assertEquals(6, cal.multiply(2, 3));
-    }
-
-    @Test
-    public void divide()  {
-        assertEquals(2, cal.divide(8, 4));
+    void setUp() {
     }
 
     @AfterEach
-    public void tearDown() {
-        cal = null;
+    void tearDown() {
+    }
+
+    @Test
+    @DisplayName("Add two numbers")
+    void add() {
+        assertEquals(4, Calculator.add(2, 2));
+    }
+
+    @Test
+    void subtract() {
+    }
+
+    @Test
+    @DisplayName("Multiply two numbers")
+    void multiply() {
+        assertAll(() -> assertEquals(4, Calculator.multiply(2, 2)),
+                () -> assertEquals(-4, Calculator.multiply(2, -2)),
+                () -> assertEquals(4, Calculator.multiply(-2, -2)),
+                () -> assertEquals(0, Calculator.multiply(1, 0)));
+    }
+
+    @Test
+    void divide() {
     }
 }
-
